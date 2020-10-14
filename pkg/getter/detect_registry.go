@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/hashicorp/terraform-svchost/disco"
 	"github.com/hashicorp/terraform/registry"
 	"github.com/hashicorp/terraform/registry/regsrc"
 )
@@ -14,6 +15,7 @@ import (
 // avinor/storage-account/azurerm?registryVersion=1.0
 type RegistryDetector struct {
 	httpClient *http.Client
+	disco      *disco.Disco
 }
 
 // Detect implements the Detector interface and will check if this source is a terraform registry
@@ -40,7 +42,7 @@ func (d *RegistryDetector) DetectRegistry(src string) (string, bool, error) {
 	pkg := parts[0]
 	version := parts[1]
 
-	client := registry.NewClient(nil, d.httpClient)
+	client := registry.NewClient(d.disco, d.httpClient)
 	module, err := regsrc.ParseModuleSource(pkg)
 	if err != nil {
 		return "", false, err

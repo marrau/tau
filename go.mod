@@ -11,8 +11,10 @@ require (
 	github.com/hashicorp/go-getter v1.5.0
 	github.com/hashicorp/hcl/v2 v2.6.0
 	github.com/hashicorp/terraform v0.13.4
+	github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734
 	github.com/kylelemons/godebug v1.1.0
 	github.com/mattn/go-isatty v0.0.12
+	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db
 	github.com/otiai10/copy v1.2.0
 	github.com/pkg/errors v0.9.1
 	github.com/russross/blackfriday v1.5.2
